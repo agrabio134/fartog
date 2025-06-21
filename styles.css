@@ -139,9 +139,14 @@ footer {
         font-size: 2.2rem;
     }
 
-header {
-width: 100% !important;
-}
+    header {
+        width: 100vw; /* Use viewport width for full coverage */
+        margin: 0; /* Remove any margins that might cause gaps */
+        padding: 1rem 0; /* Adjust padding for mobile */
+        position: relative; /* Ensure it stays in flow */
+        left: 0; /* Align to left edge */
+        right: 0; /* Align to right edge */
+    }
 
 
     header p {
@@ -156,6 +161,10 @@ width: 100% !important;
         font-size: 1.6rem;
     }
 
+    .contract-address {
+        word-break: break-all;
+        overflow-wrap: break-word;
+    }
     .connect a {
         padding: 0.6rem 1.2rem;
         font-size: 1.1rem;
