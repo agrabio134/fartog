@@ -1,0 +1,163 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Verdana', 'Geneva', sans-serif;
+    background-color: #1a1a1a; /* Solid black background */
+    color: #d2b48c; /* Light brown text */
+    line-height: 1.6;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+header {
+    text-align: center;
+    padding: 2.5rem 1rem;
+    background-color: #1a1a1a; /* Solid black background */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5);
+}
+
+header h1 {
+    font-size: 3rem;
+    color: #8b5a2b; /* Dark brown for title */
+    margin: 0.5rem 0;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
+}
+
+header p {
+    font-size: 1.2rem;
+    font-weight: 300;
+    color: #d2b48c; /* Light brown */
+}
+
+.logo {
+    max-width: 180px;
+    height: auto;
+    filter: drop-shadow(2px 2px 4px rgba(0, 0, 0, 0.6));
+}
+
+main {
+    flex: 1;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 1rem;
+}
+
+section {
+    margin: 2.5rem 0;
+    padding: 1.5rem;
+    background-color: #2c1e0f; /* Dark brown section background */
+    border-radius: 10px;
+}
+
+section h2 {
+    font-size: 2rem;
+    color: #8b5a2b; /* Dark brown */
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
+.connect ul {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.connect a {
+    display: inline-block;
+    padding: 0.8rem 1.6rem;
+    background-color: #1a1a1a; /* Black button background */
+    color: #d2b48c; /* Light brown text */
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: 500;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.connect a:hover:not(.disabled) {
+    background-color: #3c2f1a; /* Medium brown on hover */
+    transform: scale(1.1);
+}
+
+.connect a.disabled {
+    background-color: #4e4e4e; /* Gray for disabled */
+    cursor: not-allowed;
+    opacity: 0.6;
+}
+
+.connect a:focus {
+    outline: 2px solid #8b5a2b; /* Dark brown outline */
+    outline-offset: 2px;
+}
+
+.roadmap table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: #3c2f1a; /* Medium brown table background */
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.roadmap th,
+.roadmap td {
+    padding: 1rem;
+    text-align: left;
+}
+
+.roadmap th {
+    background-color: #1a1a1a; /* Black header */
+    color: #d2b48c; /* Light brown text */
+    font-weight: 600;
+}
+
+.roadmap td {
+    border-top: 1px solid #2c1e0f; /* Dark brown border */
+}
+
+.meme-cta p {
+    text-align: center;
+    font-size: 1.1rem;
+}
+
+footer {
+    text-align: center;
+    padding: 2rem;
+    background-color: #1a1a1a; /* Black footer */
+    color: #d2b48c; /* Light brown text */
+    font-size: 0.95rem;
+}
+
+@media (max-width: 600px) {
+    header h1 {
+        font-size: 2.2rem;
+    }
+
+    header p {
+        font-size: 1rem;
+    }
+
+    .logo {
+        max-width: 140px;
+    }
+
+    section h2 {
+        font-size: 1.6rem;
+    }
+
+    .connect a {
+        padding: 0.6rem 1.2rem;
+        font-size: 1.1rem;
+    }
+
+    .roadmap th,
+    .roadmap td {
+        font-size: 0.95rem;
+        padding: 0.2rem;
+    }
+}
