@@ -19,12 +19,13 @@
     <script defer src="https://terminal.jup.ag/main-v4.js"></script>
 </head>
 <body>
-    <header>
+
+    <main>
+            <header>
         <img src="IMG_20250621_191529_174.jpg" alt="$FARTOG Gas Cloud Logo" class="logo">
         <h1>$FARTOG</h1>
         <p>The Solana meme coin that smells like success 💨</p>
     </header>
-    <main>
         <section class="intro" aria-label="Introduction">
             <h2>Sniff the Revolution 💨</h2>
             <p>$FARTOG is the gassiest meme coin on Solana. Fueled by FART 💨 and degen dreams, we’re here to disrupt the blockchain with pure, unfiltered vibes. No suits, no utility—just farts and heart.</p>
@@ -157,7 +158,7 @@
                 });
                 console.log('Jupiter Terminal initialized successfully!');
 
-                // Hide Jupiter logo and ensure custom logo is visible
+                // Inject CSS to hide Jupiter logo and "1 Warnings" div
                 const style = document.createElement('style');
                 style.innerHTML = `
                     #integrated-terminal a[href*="jup.ag"] img[src*="jupiter-logo"] {
@@ -165,6 +166,9 @@
                     }
                     #integrated-terminal a[href*="jup.ag"] .font-bold {
                         margin-left: 8px;
+                    }
+                    #integrated-terminal div.mt-1.flex.items-center.gap-x-1:has(span:contains("Warnings")) {
+                        display: none !important;
                     }
                 `;
                 document.head.appendChild(style);
