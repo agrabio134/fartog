@@ -15,6 +15,8 @@
     <meta name="twitter:description" content="FART 💨. Memes. Degens.">
     <link rel="icon" type="image/png" href="IMG_20250621_191529_174.jpg">
     <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <script defer src="https://terminal.jup.ag/main-v4.js"></script>
 </head>
 <body>
     <header>
@@ -34,8 +36,8 @@
         <section class="connect" aria-label="Connect with $FARTOG">
             <h2>Join the Stink Squad</h2>
             <ul>
-                <li><a href="https://t.me/RealFartOG"  aria-disabled="true">Telegram</a></li>
-                <li><a href="https://x.com/fartog_"  aria-disabled="true">X Community</a></li>
+                <li><a href="https://t.me/RealFartOG" class="disabled" aria-disabled="true">Telegram</a></li>
+                <li><a href="https://x.com/fartog_" class="disabled" aria-disabled="true">X Community</a></li>
             </ul>
         </section>
         <section class="roadmap" aria-label="$FARTOG Roadmap">
@@ -72,28 +74,113 @@
                 </tbody>
             </table>
         </section>
-
         <section class="meme-cta" aria-label="Meme Call to Action">
             <h2>Unleash Your Inner Degen</h2>
             <p>Create the dankest $FARTOG memes and post them on X with <strong>#FartGang</strong>. The gassiest memes might score some $FARTOG tokens when we launch. Stay tuned for the X community drop!</p>
         </section>
         <section>
             <h2>Chart</h2>
-            <style>#dexscreener-embed{position:relative;width:100%;padding-bottom:125%;}@media(min-width:1400px){#dexscreener-embed{padding-bottom:65%;}}#dexscreener-embed iframe{position:absolute;width:100%;height:100%;top:0;left:0;border:0;}</style><div id="dexscreener-embed"><iframe src="https://dexscreener.com/solana/d7R9q5pd7qTkpvgDw3fjSo8VE7RnE5h6yuBNGpK9899?embed=1&loadChartSettings=0&trades=0&tabs=0&info=0&chartLeftToolbar=0&chartDefaultOnMobile=1&chartTheme=dark&theme=dark&chartStyle=0&chartType=usd&interval=15"></iframe></div>
+            <style>#dexscreener-embed{position:relative;width:100%;padding-bottom:125%;}@media(min-width:1400px){#dexscreener-embed{padding-bottom:65%;}}#dexscreener-embed iframe{position:absolute;width:100%;height:100%;top:0;left:0;border:0;}</style>
+            <div id="dexscreener-embed">
+                <iframe src="https://dexscreener.com/solana/d7R9q5pd7qTkpvgDw3fjSo8VE7RnE5h6yuBNGpK9899?embed=1&loadChartSettings=0&trades=0&tabs=0&info=0&chartLeftToolbar=0&chartDefaultOnMobile=1&chartTheme=dark&theme=dark&chartStyle=0&chartType=usd&interval=15"></iframe>
+            </div>
+        </section>
+        <section class="swap-section" id="grab" aria-label="Swap $FARTOG">
+            <h2>Snag $FARTOG 💨</h2>
+            <p>Grab $FARTOG tokens in 3 gassy steps!</p>
+            <ol class="swap-steps">
+                <li><i class="fas fa-wallet fa-icon"></i> Connect a Solana wallet (e.g., Phantom, Solflare).</li>
+                <li><i class="fas fa-exchange-alt fa-icon"></i> Enter the amount of SOL to swap for $FARTOG.</li>
+                <li><i class="fas fa-check-circle fa-icon"></i> Review and confirm the swap in your wallet.</li>
+            </ol>
+            <div id="integrated-terminal">
+                <div class="fartog-branding">
+                    <img src="IMG_20250621_191529_174.jpg" alt="$FARTOG Logo" class="fartog-logo">
+                    <span>$FARTOG Swap</span>
+                </div>
+            </div>
         </section>
     </main>
     <footer>
         <p>© 2025 $FARTOG. Powered by beans and bad decisions.</p>
     </footer>
-    <audio id="fart-audio" preload="auto">
+    <audio id="fart" preload="auto">
         <source src="fart.mp3" type="audio/mpeg">
     </audio>
     <script>
+        // Fix fart audio script
         window.addEventListener('click', function playFart() {
-            const fartAudio = document.getElementById('fart-audio');
+            const fartAudio = document.getElementById('fart');
             fartAudio.play().catch(() => {});
             window.removeEventListener('click', playFart);
         });
+
+        // Initialize Jupiter Terminal with retry logic
+        function initJupiterTerminal() {
+            const terminalContainer = document.getElementById('integrated-terminal');
+            if (!terminalContainer) {
+                console.error('Jupiter Terminal container not found!');
+                return;
+            }
+
+            // Check if Jupiter script is loaded
+            if (!window.Jupiter) {
+                console.error('Jupiter script not loaded yet. Retrying...');
+                setTimeout(initJupiterTerminal, 500);
+                return;
+            }
+
+            try {
+                window.Jupiter.init({
+                    displayMode: "integrated",
+                    integratedTargetId: "integrated-terminal",
+                    endpoint: "https://rpc.ankr.com/solana",
+                    strictTokenList: false,
+                    defaultExplorer: "Solscan",
+                    formProps: {
+                        initialInputMint: "So11111111111111111111111111111111111111112", // SOL
+                        initialOutputMint: "DPRsW69Biyqtu9pmKBoPxbqNp9QcVpkH2yUSFeX2pump", // $FARTOG
+                        initialAmount: "100000000", // 0.1 SOL
+                        fixedInputMint: false,
+                        fixedOutputMint: true,
+                    },
+                    theme: {
+                        colors: {
+                            primary: "#3c2f1a",
+                            secondary: "#8b5a2b",
+                            background: "#1a1a1a",
+                            text: "#d2b48c",
+                            accent: "#2c1e0f",
+                        },
+                        fontFamily: "'Verdana', 'Geneva', sans-serif",
+                    },
+                });
+                console.log('Jupiter Terminal initialized successfully!');
+
+                // Hide Jupiter logo and ensure custom logo is visible
+                const style = document.createElement('style');
+                style.innerHTML = `
+                    #integrated-terminal a[href*="jup.ag"] img[src*="jupiter-logo"] {
+                        display: none !important;
+                    }
+                    #integrated-terminal a[href*="jup.ag"] .font-bold {
+                        margin-left: 8px;
+                    }
+                `;
+                document.head.appendChild(style);
+            } catch (err) {
+                console.error('Failed to initialize Jupiter Terminal:', err);
+                terminalContainer.innerHTML = `
+                    <div style="color: #d2b48c; padding: 1rem; text-align: center;">
+                        <p>Sorry, the swap interface failed to load. 😢</p>
+                        <p>Please try again later or visit <a href="https://jup.ag/swap/SOL-FARTOG" style="color: #8b5a2b; text-decoration: underline;">Jupiter</a> to swap $FARTOG.</p>
+                    </div>
+                `;
+            }
+        }
+
+        // Run initialization after window load
+        window.addEventListener('load', initJupiterTerminal);
     </script>
 </body>
 </html>
