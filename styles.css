@@ -21,7 +21,7 @@ body {
     width: 100%;
     display: flex;
     flex-direction: column;
-    overflow-x: hidden; /* Prevent horizontal scrolling */
+    overflow-x: hidden;
 }
 
 header {
@@ -116,9 +116,6 @@ section h2 {
     background-color: var(--fartog-medium-brown);
     border-radius: 8px;
     overflow: hidden;
-    display: block;
-    overflow-x: auto; /* Enable horizontal scrolling for tables on mobile */
-    white-space: nowrap;
 }
 
 .roadmap th,
@@ -237,6 +234,7 @@ footer {
     font-size: clamp(0.8rem, 3vw, 0.9rem);
 }
 
+/* Mobile Styles (max-width: 600px) */
 @media (max-width: 600px) {
     header {
         width: 100%;
@@ -246,7 +244,7 @@ footer {
 
     body {
         width: 100%;
-        font-size: 16px; /* Ensure base font size is reasonable */
+        font-size: 16px;
     }
 
     header h1 {
@@ -294,6 +292,12 @@ footer {
         padding: 0.5rem;
     }
 
+    .roadmap table {
+        display: block;
+        overflow-x: auto;
+        white-space: nowrap;
+    }
+
     .contract-address {
         word-break: break-all;
         overflow-wrap: break-word;
@@ -301,8 +305,122 @@ footer {
     }
 }
 
+/* Ultra-Small Mobile (max-width: 360px) */
 @media (max-width: 360px) {
     #integrated-terminal {
         min-height: 260px;
+    }
+}
+
+/* Desktop Styles (min-width: 1024px) */
+@media (min-width: 1024px) {
+    body {
+        font-size: 18px;
+    }
+
+    header {
+        padding: 3rem 2rem;
+    }
+
+    header h1 {
+        font-size: 3rem;
+    }
+
+    header p {
+        font-size: 1.2rem;
+        max-width: 800px;
+        margin: 0 auto;
+    }
+
+    .logo {
+        max-width: 180px;
+    }
+
+    main {
+        max-width: 1200px;
+        padding: 2rem;
+    }
+
+    section {
+        margin: 2rem 0;
+        padding: 2rem;
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.5);
+    }
+
+    section h2 {
+        font-size: 2rem;
+    }
+
+    .connect ul {
+        gap: 1rem;
+    }
+
+    .connect a {
+        padding: 0.8rem 1.5rem;
+        font-size: 1.1rem;
+    }
+
+    .roadmap table {
+        display: table; /* Override mobile scroll behavior */
+        white-space: normal;
+    }
+
+    .roadmap th,
+    .roadmap td {
+        font-size: 1rem;
+        padding: 1rem;
+    }
+
+    .swap-section {
+        padding: 2rem;
+        margin: 2rem 0;
+    }
+
+    .swap-section h2 {
+        font-size: 2rem;
+    }
+
+    .swap-section p {
+        font-size: 1.1rem;
+        max-width: 800px;
+        margin: 0 auto 1rem;
+    }
+
+    #integrated-terminal {
+        min-height: 400px;
+        max-width: 900px;
+        border-width: 3px;
+    }
+
+    .fartog-branding {
+        padding: 0.5rem 1rem;
+    }
+
+    .fartog-branding .fartog-logo {
+        width: 32px;
+        height: 32px;
+    }
+
+    .fartog-branding span {
+        font-size: 1rem;
+    }
+
+    ol.swap-steps {
+        max-width: 700px;
+        font-size: 1rem;
+        margin: 1rem auto;
+    }
+
+    ol.swap-steps li {
+        margin-bottom: 0.75rem;
+    }
+
+    ol.swap-steps i {
+        font-size: 1.2rem;
+    }
+
+    footer {
+        padding: 2rem;
+        font-size: 1rem;
     }
 }
